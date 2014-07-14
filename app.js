@@ -17,7 +17,7 @@ var monk = require('monk');
 var db = monk('localhost:27017/clock');
 
 
-// serve static content from the public folder 
+// serve static content from the public folder .
 app.use("/", express.static(__dirname + '/www'));
 
 
