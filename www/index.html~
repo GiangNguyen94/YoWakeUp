@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart clock</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+	<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<meta charset='utf-8' />
+	<link href='css/fullcalendar.css' rel='stylesheet' />
+	<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<script src='js/moment.min.js'></script>
+	<script src='js/jquery.min.js'></script>
+	<script src='js/jquery-ui.custom.min.js'></script>
+	<script src='js/fullcalendar.min.js'></script>
+	<script>
+
+	$(document).ready(function() {
+
+		$('#calendar-view').fullCalendar({
+			editable: true,
+			events: [
+			]
+		});
+		
+	});
+
+	</script>
+	<style>
+
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar-view {
+		width: auto;
+		margin: auto;
+	}
+
+	</style>
+
+</head>
+<body>
+  <div class="container">
+	<div class="page-header">
+        <h1> <span id="title">YOWAKEUP</span>
+        </h1>
+    </div>
+
+   <div id="welcome-view" class="view">
+   	This clock app is a demo for the CS152aj class on Web and Mobile programming using Javascript.
+   	<br>
+	<button onclick="clockApp.showView('clockList')">
+		<span>Clocks</span></button>
+	<button onclick="clockApp.showView('contacts')">
+		<span>Contacts</span></button>
+    <button onclick="clockApp.showView('calendar')">
+        <span>Calendar</span></button>
+    <button onclick="clockApp.showView('about')">
+        <span>About</span></button>
+   </div>
+   <div id="about-view" class="view">
+        <div>
+        <p>
+
+            Version: alpha0.1</p>
+        </div>
+
+    <span class="input-group-btn" >
+            <button class="btn btn-default" onclick="clockApp.showView('welcome')">
+                    Home</button>
+            </span>
+    </div>
+
+   <div id="contacts-view" class="view">
+    <p>
+    	contacts
+	</p>
+         <button class="btn btn-default" onclick="clockApp.showView('welcome')">
+                Home</button>
+
+   </div>
+   <div id="calendar-view" class="view">
+         <button class="btn btn-default" onclick="clockApp.showView('welcome')">
+                Home</button>
+
+   </div>
+   
+   <div id="clockList-view" class="view">
+	<div class="input-group">
+		<span class="input-group-btn" >
+			<button id="refreshBtn" class="btn btn-default" onclick="clockApp.reloadModel()">
+				Refresh</button>
+		</span>
+		<span></span>
+		<span class="input-group-btn" >
+	   		<button class="btn btn-default" onclick="clockApp.showView('welcome')">
+				Home</button>
+			</span>
+	</div>
+
+    <div class="panel">
+
+           <button id="plusBtn" class="btn btn-default" onclick="clockApp.addalarm()">
+        +</button>
+
+
+    </div>
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Status</th>
+					<th>Description</th>
+          <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="alarmTableBody">
+          
+            </tbody>
+        </table>
+
+        <div class="checkbox-inline">
+            <label><input id="showon" type="checkbox" onclick="clockApp.refreshView()" checked> 
+	            Show "On" Alarms</label>
+        </div>
+    </div>
+
+  </div>
+ </div>
+</body>
+<script>
+// this is the code that actually starts the JavaScript application!!
+// when the document has been fully loaded, all the clockApp.start() method
+$(document).ready(clockApp.start());
+<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+</script>
+</html>

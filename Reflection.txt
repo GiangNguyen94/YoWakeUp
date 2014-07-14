@@ -1,0 +1,5 @@
+Reflection:
+
+The most difficult aspect of this assignment was getting github to work. Once we were able to figure out how to push and pull our documents, the project became much smoother. Fluency with github is crucial for our success.
+
+Setting up a datepicker was much easier with jQuery compared to angularJS. I was a bit nervous about using jQuery, but the set up of the datepicker made me much more confident going forward

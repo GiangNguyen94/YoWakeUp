@@ -1,0 +1,4 @@
+For PA03, I was responsible for the clock page (after clicking the button "clock" from the home page)
+I changed the code from dbdemo into what we want for our project.
+the biggest problem I met was the checkbox, how to change status ( one of the models for each alarm) from true<->false through 
+clicking on a checkbox, because it was the first time to use Jquery to write this part. 
