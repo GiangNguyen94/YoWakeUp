@@ -2,6 +2,70 @@
 <html>
 <head>
     <title>Smart clock</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    
+  <script>
+     document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Play audio
+        //
+        function playAudio(src) {
+            // Create Media object from src
+            my_media = new Media(src, onSuccess, onError);
+
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position > -1) {
+                                setAudioPosition((position) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
+        }
+
+         function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+  </script>
+
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
@@ -17,6 +81,7 @@
 	<script src='js/jquery.min.js'></script>
 	<script src='js/jquery-ui.custom.min.js'></script>
 	<script src='js/fullcalendar.min.js'></script>
+  
 	<script>
 
 	$(document).ready(function() {
@@ -57,6 +122,8 @@
    <div id="welcome-view" class="view">
    	This clock app is a demo for the CS152aj class on Web and Mobile programming using Javascript.
    	<br>
+  <button onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');">
+    <span>Play</span></button>
 	<button onclick="clockApp.showView('clockList')">
 		<span>Clocks</span></button>
 	<button onclick="clockApp.showView('contacts')">

@@ -14,11 +14,11 @@ var bodyParser = require('body-parser'); // this allows us to pass JSON values t
 var app = express();
 
 var monk = require('monk');
-var db = monk('localhost:27017/clock');
+var db = monk('129.64.228.114:27017/clock');
 
 
 // serve static content from the public folder .
-app.use("/", express.static(__dirname + '/www'));
+app.use("/", express.static(__dirname + '/public'));
 
 
 // parse the bodies of all other queries as json

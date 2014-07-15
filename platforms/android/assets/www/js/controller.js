@@ -27,6 +27,20 @@ var clockApp = (function($) {
     }
 
 
+    
+    function playAudio() {
+    // Play the audio file at url
+        var my_media = new Media("/Desktop/JBS2014/Git_JBS/YoWakeUp/www/chenxing_final_001.wav",
+        // success callback
+        function () { console.log("playAudio():Audio Success"); },
+        // error callback
+        function (err) { console.log("playAudio():Audio Error: " + err); }
+    );
+
+    // Play audio
+    my_media.play();
+    }
+
     function addalarm() {
 
 
@@ -112,7 +126,6 @@ var clockApp = (function($) {
 
 
     }
-
 
     // here is were we decide what is visible to the outside!
     clockApp = {
